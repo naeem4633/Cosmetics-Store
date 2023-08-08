@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
-const Listing = ({products, onChange}) => {
+const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) => {
     const [user, setUser] = useState({});
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
@@ -89,6 +89,7 @@ const Listing = ({products, onChange}) => {
           // Handle any errors that occurred during the request
           console.error('Error adding product to cart:', error);
         });
+        setCartIsHovered(true);
     };    
 
     const handleAddToWishlist = (product) => {
@@ -119,12 +120,13 @@ const Listing = ({products, onChange}) => {
           // Handle any errors that occurred during the request
           console.error('Error adding product to wishlist:', error);
         });
+        setWishlistIsHovered(true);
     };
 
   return (
     <section className='w-full relative tracking-wide'>
         <div className='mx-auto w-full px-8 xl:w-5/6 xl:px-0 flex flex-col space-y-6'>
-            <img className='w-full h-[25vh] border border-black'></img>
+            <img src='../static/images/listing-cover.jpg' className='w-full'></img>
             <div className='flex flex-row'>
                 <div className='w-1/5 flex flex-col space-y-8'>
                     <div className='w-full flex flex-col border border-gray-300 px-4 py-6 rounded-lg space-y-6'>
@@ -204,12 +206,12 @@ const Listing = ({products, onChange}) => {
                         </ul>
                         )}
                     </div>
-                    <div className='p-2 grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-stretch'>
+                    <div className='p-2 grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-stretch gap-y-6'>
                         {sortedProducts.map((product) => (
-                        <div key={product.id} className='flex flex-col p-3 space-y-2'>
+                        <div key={product.id} className='flex flex-col p-3 space-y-2 hover:scale-105 transition-all duration-200'>
                             <Link to={`/product-details/${product.id}`} className='space-y-2'>
-                              <img className='w-full h-52'></img>
-                              <p className='h-8 text-sm'>{product.brand} {product.name}</p>
+                              <img src={product.image_url} className='mx-auto w-4/5'></img>
+                              <p className='h-10 text-sm'>{product.brand} {product.name}</p>
                             </Link>
                             <p className='text-sm font-semibold'>${product.price}</p>
                             <div className='flex w-full justify-between space-x-1'>

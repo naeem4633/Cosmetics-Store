@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import Slider from '../components/Slider';
 import MovingImages from '../components/MovingImages';
 
-const ProductDetails = ({onChange}) => {
+const ProductDetails = ({onChange, cartIsHovered, setCartIsHovered}) => {
     const { id } = useParams();
     let [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState([]);
     const [products, setProducts] = useState([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('Select your Shade / Size');
 
     useEffect(() => {
       // Function to fetch the products based on the category name
@@ -56,6 +58,7 @@ const ProductDetails = ({onChange}) => {
             // Handle any errors that occurred during the request
             console.error('Error adding product to cart:', error);
           });
+          setCartIsHovered(true);
       };    
     
       useEffect(() => {
@@ -72,14 +75,25 @@ const ProductDetails = ({onChange}) => {
     
         fetchProducts();
       }, []);
-
+    
+      const dropdownOptions = ['Shade 1', 'Shade 2', 'Shade 3'];
+    
+      const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        setIsDropdownOpen(false);
+      };
+    
+      const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+      };
+      
   return (
-    <section className='w-full relative flex flex-col tracking-wide mt-16'>
+    <section className='w-full relative flex flex-col tracking-wide mt-16 space-y-20'>
         <div className='mx-auto w-3/4 flex flex-row tracking-wide p-4'>
             <div className='w-1/2 flex flex-col'>
                 <div className='h-[60vh]'>
-                    <img className='w-full h-4/5 border border-black'></img>
-                    <div className='h-1/5 border border-black'>
+                    <img src={product.image_url} className='mx-auto w-4/5 h-4/5'></img>
+                    <div className='h-1/5'>
                         <MovingImages products={products} />
                     </div>
                 </div>
@@ -97,8 +111,28 @@ const ProductDetails = ({onChange}) => {
                     <p className='text-gray-500'>$2.0 on credit</p>
                     <p className='text-sm'>Shopping limit for new users: $10 - $50</p>
                 </div>
-                <div className='w-full p-4 space-y-2'>
-                  <div className='p-3 border border-[#c82f7e]'>Select your Shade / Size</div>
+                  <div className='w-full p-4 space-y-2'>
+                    <div className='relative'>
+                      <div
+                        className='p-3 border border-[#c82f7e] cursor-pointer hover:bg-gray-100'
+                        onClick={toggleDropdown}
+                      >
+                        {selectedOption}
+                      </div>
+                      {isDropdownOpen && (
+                        <div className='w-full absolute top-[100%] left-0 mt-2 bg-white border border-[#c82f7e]'>
+                          {dropdownOptions.map((option) => (
+                            <div
+                              key={option}
+                              className='p-3 border-t cursor-pointer hover:bg-[#c82f7e] hover:text-white'
+                              onClick={() => handleOptionClick(option)}
+                            >
+                              {option}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                     <div className='flex flex-row items-center'>
                       <div onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}  className='w-12 h-12 color-secondary flex items-center justify-center cursor-pointer hover:bg-[#96205d] transition-all duration-200'>
                           <img src='../static/images/minus.png' className='w-6 h-6'></img>
@@ -110,7 +144,7 @@ const ProductDetails = ({onChange}) => {
                   </div>
                 </div>
                 <div className='w-full p-4 space-y-2'>
-                    <p className='text-sm text-gray-500'>Sku: prod.sku</p>
+                    <p className='text-sm text-gray-500'>Sku: {product.sku}</p>
                     <button onClick={() => handleAddToCart(product)} className='flex flex-row color-secondary w-40 h-14 items-center rounded px-4 space-x-4 hover:bg-[#96205d] transition-all duration-200'>
                         <img src='../static/images/cart.png' className='w-5 h-5'></img>
                         <p className='text-white font-semibold'>Add to cart</p>
@@ -119,15 +153,15 @@ const ProductDetails = ({onChange}) => {
                 <div className='w-full text-sm px-4'>
                     <div className='flex flex-row items-center justify-between border border-gray-200 p-2'>
                         <p>Product Description</p>
-                        <img className='w-4 h-4' src='../static/images/plus-black.png'></img>
+                        <img className='cursor-pointer w-4 h-4' src='../static/images/plus-black.png'></img>
                     </div>
                     <div className='flex flex-row items-center justify-between border border-gray-200 p-2'>
                         <p>How to use</p>
-                        <img className='w-4 h-4' src='../static/images/plus-black.png'></img>
+                        <img className='cursor-pointer w-4 h-4' src='../static/images/plus-black.png'></img>
                     </div>
                     <div className='flex flex-row items-center justify-between border border-gray-200 p-2'>
                         <p>Ingredients</p>
-                        <img className='w-4 h-4' src='../static/images/plus-black.png'></img>
+                        <img className='cursor-pointer w-4 h-4' src='../static/images/plus-black.png'></img>
                     </div>
                 </div>
               </div>

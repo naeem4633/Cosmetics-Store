@@ -99,8 +99,7 @@ const Checkout = ({savedItems, onChange}) => {
                     <>
                     <div className="mx-auto w-full flex flex-row mt-3 mb-5 justify-between text-sm space-x-1">
                         <img className="w-20 h-20"
-                            // src={item.furniture.image_url}
-                            src='' alt={item.name}/>
+                            src={item.product.image_url}/>
                         <div className="flex flex-grow flex-row text-left justify-between items-center px-3 pt-3">
                             <div className="w-full flex flex-col space-y-1">
                                 <p className="w-full">

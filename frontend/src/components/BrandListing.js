@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Listing from './Listing';
 
-const BrandListing = ({onChange, savedItems}) => {
+const BrandListing = ({onChange, setCartIsHovered, setWishlistIsHovered }) => {
     const { brandName } = useParams();
     const [products, setProducts] = useState([]);
 
@@ -23,7 +23,7 @@ const BrandListing = ({onChange, savedItems}) => {
     }, [brandName]);
 
   return (
-    <Listing products={products} onChange={onChange}/>
+    <Listing products={products} onChange={onChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>
   )
 }
 

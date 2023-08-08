@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom';
 
-const Header = ({savedItems, onChange}) => {
+const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCartIsHovered, setWishlistIsHovered}) => {
     const [makeupOpen, setMakeupOpen] = useState(false);
     const [skinCareOpen, setSkinCareOpen] = useState(false);
     const [hairCareOpen, setHairCareOpen] = useState(false);
     const [fragranceOpen, setFragranceOpen] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
 
-    const [cartIsHovered, setCartIsHovered] = useState(false);
-    const [wishlistIsHovered, setWishlistIsHovered] = useState(false);
+
     const cartRef = useRef(null);
     const wishlistRef = useRef(null);
     
@@ -440,14 +439,13 @@ const Header = ({savedItems, onChange}) => {
                                         <div className="mx-auto w-3/4 flex flex-row mt-3 mb-5 justify-between text-sm space-x-1">
                                             <img
                                                 className="w-20 h-20"
-                                                // src={item.furniture.image_url}
-                                                src=''
+                                                src={item.product.image_url}
                                                 alt={item.name}
                                             />
                                             <div className="flex flex-grow flex-row text-left justify-between items-center p-3">
                                                 <div className="w-full flex flex-col space-y-1">
                                                     <p className="w-full">
-                                                    {item.product.name} x {item.quantity}
+                                                    {item.product.name}
                                                     </p>
                                                     <p className="mb-2">$ {item.product.price}</p>
                                                 </div>
@@ -497,8 +495,7 @@ const Header = ({savedItems, onChange}) => {
                                         <div className="mx-auto w-3/4 flex flex-row mt-3 mb-5 justify-between text-sm space-x-1">
                                             <img
                                                 className="w-20 h-20"
-                                                // src={item.furniture.image_url}
-                                                src=''
+                                                src={item.product.image_url}
                                                 alt={item.name}
                                             />
                                             <div className="flex flex-grow flex-row text-left justify-between items-center p-3">

@@ -24,31 +24,31 @@ const Home = () => {
   return (
     <section className='w-full relative tracking-wide'>
         <div className='mx-auto w-5/6 flex flex-col space-y-6'>
-            <img className='w-full h-[40vh] border border-black'></img>
+            <img src='../static/images/maybelline-full.jpg' className='w-full'></img>
             <div className='w-3/4 mx-auto grid grid-cols-4 gap-y-4 tracking-widest'>
                 <Link to={`/category/Skin%20Care`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
-                    <img className='h-40 w-40 rounded-full bg-gray-200'></img>
+                    <img src='../static/images/face.jpg' className='w-40 rounded-full bg-gray-200'></img>
                     <p className='text-xl font-semibold'>Face</p>
                 </Link>
                 <Link to={`/category/makeup`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
-                    <img className='h-40 w-40 rounded-full bg-gray-200'></img>
+                    <img src='../static/images/eyes.jpg' className='w-40 rounded-full bg-gray-200'></img>
                     <p className='text-xl font-semibold'>Eyes</p>
                 </Link>
                 <Link to={`/category/Hair%20Care`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
-                    <img className='h-40 w-40 rounded-full bg-gray-200'></img>
+                    <img src='../static/images/hair.jpg' className='w-40 rounded-full bg-gray-200'></img>
                     <p className='text-xl font-semibold'>Hair</p>
                 </Link>
                 <Link to={`/category/fragrance`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
-                    <img className='h-40 w-40 rounded-full bg-gray-200'></img>
+                    <img src='../static/images/skin.jpg' className='w-40 rounded-full bg-gray-200'></img>
                     <p className='text-xl font-semibold'>Skin</p>
                 </Link>
             </div>
-            <img src='../static/images/wet-n-wild.jpg' className='w-full h-[40vh] border border-black'></img>
-            <div className='w-full h-[40vh] grid grid-cols-2 gap-6'>
-                <img src='../static/images/kerastase.jpg' className='w-full border border-black'></img>
-                <img src='../static/images/nyx.jpg' className='w-full h-full border border-black'></img>
-            </div>
-            <img src='../static/images/fragrance.jpg' className='w-full h-[40vh] border border-black'></img>
+            <img src='../static/images/wet-n-wild-full.jpg' className='w-full'></img>
+            <div className='w-full grid grid-cols-2 gap-6'>
+                <img src='../static/images/kerastase.jpg' className='w-full'></img>
+                <img src='../static/images/nyx-half.jpg' className='w-full h-full'></img>
+            </div>  
+            <img src='../static/images/fragrance.jpg' className='w-full'></img>
             <div className='flex flex-col space-y-40 pt-12'>
                 <div className='mx-auto w-3/5 flex flex-col space-y-12'>
                     <p className='mx-auto text-3xl'>Top Brands</p>

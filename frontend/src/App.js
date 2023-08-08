@@ -16,6 +16,8 @@ import SearchResults from './pages/SearchResults';
 
 function App() {
   const [savedItems, setSavedItems] = useState([]);
+  const [cartIsHovered, setCartIsHovered] = useState(false);
+  const [wishlistIsHovered, setWishlistIsHovered] = useState(false);
 
   useEffect(() => {
     // Function to fetch savedItems from the backend
@@ -31,7 +33,7 @@ function App() {
     // Call the fetchSavedItems function when the component mounts
     fetchSavedItems();
   }, []);
-
+  
   const handleSavedItemsArrayChange = (updatedItems) => {
     setSavedItems(updatedItems);
   };
@@ -56,14 +58,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header savedItems={savedItems} onChange={handleSavedItemsArrayChange} />
+        <Header savedItems={savedItems} onChange={handleSavedItemsArrayChange} cartIsHovered={cartIsHovered} wishlistIsHovered={wishlistIsHovered} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>
         <div className="App-body">
           <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/product-details/:id' element={<ProductDetails onChange={handleSavedItemsChange}/>}/>
-            <Route path='/listing' element={<Listing onChange={handleSavedItemsChange}/>}/>
-            <Route path='/brands/:brandName' element={<BrandListing onChange={handleSavedItemsChange}/>} />
-            <Route path='/category/:categoryName' element={<CategoryListing onChange={handleSavedItemsChange}/>} />
+            <Route path='/product-details/:id' element={<ProductDetails onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered}/>}/>
+            <Route path='/listing' element={<Listing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
+            <Route path='/brands/:brandName' element={<BrandListing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
+            <Route path='/category/:categoryName' element={<CategoryListing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/checkout' element={<Checkout savedItems={savedItems} onChange={handleSavedItemsArrayChange} />} />

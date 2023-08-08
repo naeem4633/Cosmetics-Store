@@ -34,14 +34,14 @@ const Slider = ({products}) => {
         // dotListClass="custom-dot-list-style"
       >
         {products.map((product, index) => (
-          <div key={index} className="flex-shrink-0 h-72 w-full p-2">
-            <div className='w-full h-full flex flex-col space-y-3 border border-black p-2'>
-              <img src={product.image_url} alt={`Slide ${index}`} className="mx-auto border border-black w-3/4 h-full object-cover" />
-              <Link to={`/product-details/${product.id}`} className='flex flex-col items-center justify-center'>
-                <p className='h-10 text-sm font-semibold text-center'>{product.brand} {product.name}</p>
+          <div key={index} className="flex-shrink-0 min-h-72 w-full p-2">
+            <Link to={`/product-details/${product.id}`} className='w-full h-full flex flex-col space-y-3 p-2'>
+              <img src={product.image_url} alt={`Slide ${index}`} className="mx-auto w-40 h-40 object-cover" />
+              <div className='flex flex-col space-y-2 items-center justify-center'>
+                <p className='min-h-10 text-sm font-semibold text-center'>{product.brand} {product.name}</p>
                 <p className='text-sm text-center'>${product.price}</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         ))}
       </Carousel>
