@@ -125,10 +125,10 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
 
   return (
     <section className='w-full relative tracking-wide'>
-        <div className='mx-auto w-full px-8 xl:w-5/6 xl:px-0 flex flex-col space-y-6'>
+        <div className='mx-auto w-full px-2 xl:w-5/6 xl:px-0 flex flex-col space-y-6'>
             <img src='../static/images/listing-cover.jpg' className='w-full'></img>
-            <div className='flex flex-row'>
-                <div className='w-1/5 flex flex-col space-y-8'>
+              <div className='w-full flex flex-row'>
+                <div className='w-1/5 hidden lg:flex flex-col space-y-8'>
                     <div className='w-full flex flex-col border border-gray-300 px-4 py-6 rounded-lg space-y-6'>
                         <p className='text-2xl'>Filter by Price</p>
                         <hr></hr>
@@ -185,21 +185,21 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
                         </ul>
                     </div>
                 </div>
-                <div className='w-4/5 flex flex-col p-4 space-y-8'>
-                    <div aria-haspopup="true" aria-expanded={dropdownOpen} onClick={toggleDropdown} className='ml-5 right-0 w-40 border border-gray-300 p-2 rounded-md flex flex-row space-x-2 items-center justify-between cursor-pointer'>
+                <div className='w-full lg:w-4/5 flex flex-col lg:p-4 space-x-2 lg:space-y-8'>
+                    <div aria-haspopup="true" aria-expanded={dropdownOpen} onClick={toggleDropdown} className='ml-5 right-0 w-28 border border-gray-300 p-2 rounded-md flex flex-row space-x-2 items-center justify-between cursor-pointer'>
                         <img className='w-4 h-4' src='../static/images/sort.png'></img>
-                        <p className="mx-2">Sort By</p>
+                        <p className="text-sm lg:text-base mx-2">Sort By</p>
                         {!dropdownOpen && (<img src="../static/images/down-arrow.png" alt="Down arrow icon" className="w-3 h-3" />)}
                         {dropdownOpen && (<img src="../static/images/down-arrow.png" alt="Down arrow icon" className="w-3 h-3 rotate-180" />)}
                         {dropdownOpen && (
-                        <ul className="w-40 bg-white absolute rounded border border-gray-300 translate-y-3/4 -translate-x-4" aria-labelledby="filterDropdown">
+                        <ul className="w-28 bg-white absolute rounded border border-gray-300 translate-y-3/4 -translate-x-4" aria-labelledby="filterDropdown">
                             <li>
-                                <button className="w-full mx-auto p-3 hover:bg-gray-200" onClick={() => handleSort('low_to_high')}>
+                                <button className="w-full mx-auto p-3 hover:bg-gray-200 text-xs lg:text-base " onClick={() => handleSort('low_to_high')}>
                                 Price: Low to high
                                 </button>
                             </li>
                             <li>
-                                <button className="w-full mx-auto p-3 hover:bg-gray-200" onClick={() => handleSort('high_to_low')}>
+                                <button className="w-full mx-auto p-3 hover:bg-gray-200 text-xs lg:text-base " onClick={() => handleSort('high_to_low')}>
                                 Price: High to low
                                 </button>
                             </li>
@@ -208,16 +208,16 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
                     </div>
                     <div className='p-2 grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-stretch gap-y-6'>
                         {sortedProducts.map((product) => (
-                        <div key={product.id} className='flex flex-col p-3 space-y-2 hover:scale-105 transition-all duration-200'>
+                        <div key={product.id} className='flex flex-col p-1 lg:p-3 space-y-2 hover:scale-105 transition-all duration-200 text-xs lg:text-sm'>
                             <Link to={`/product-details/${product.id}`} className='space-y-2'>
                               <img src={product.image_url} className='mx-auto w-4/5'></img>
-                              <p className='h-10 text-sm'>{product.brand} {product.name}</p>
+                              <p className='h-10'>{product.brand} {product.name}</p>
                             </Link>
-                            <p className='text-sm font-semibold'>${product.price}</p>
+                            <p className=' font-semibold'>${product.price}</p>
                             <div className='flex w-full justify-between space-x-1'>
-                                <div onClick={() => handleAddToCart(product)} className='w-4/5 flex flex-row color-secondary justify-center space-x-2 items-center p-3 hover:bg-[#96205d] transition-all duration-200 cursor-pointer'>
+                                <div onClick={() => handleAddToCart(product)} className='w-4/5 flex flex-row color-secondary justify-center space-x-2 items-center hover:bg-[#96205d] transition-all duration-200 cursor-pointer'>
                                     <img className='w-5 h-5' src='../static/images/cart.png'></img>
-                                    <p className='text-white text-sm font-semibold'>Add to Cart</p>
+                                    <p className='text-white font-semibold'>Add to Cart</p>
                                 </div>
                                 <div onClick={() => handleAddToWishlist(product)} className='flex-grow border border-gray-300 hover:bg-gray-200 flex items-center justify-center cursor-pointer transition-all duration-200 rounded'>
                                     <img className='w-8 h-8' src='../static/images/love.png'></img>

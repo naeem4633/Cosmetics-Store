@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Checkout = ({savedItems, onChange}) => {
+    const [orderPlacedVisible, setOrderPlacedVisible] = useState(false);
     let cartItems = savedItems.filter(item => item.is_cart === true);
     const [formData, setFormData] = useState({
       firstName: '',
@@ -58,6 +59,7 @@ const Checkout = ({savedItems, onChange}) => {
             console.error('Error creating order:', error);
             // Show an error message to the user
           });
+          setOrderPlacedVisible(true);
       };
   return (
     <section className='w-full relative flex flex-col tracking-wide mt-16'>
@@ -86,10 +88,21 @@ const Checkout = ({savedItems, onChange}) => {
                         <input type='text' name='expiryMonth' value={formData.expiryMonth} onChange={handleChange} placeholder='MM' className='w-1/4 p-3 focus:outline-[#c82f7e] rounded border border-gray-300'/>
                         <input type='text' name='expiryYear' value={formData.expiryYear} onChange={handleChange} placeholder='YY' className='w-1/4 p-3 focus:outline-[#c82f7e] rounded border border-gray-300'/>
                     </div>
-                    <button type='submit' className='w-full bg-[#c82f7e] text-white font-semibold p-3 rounded border border-gray-300 hover:bg-[#96205d] transition-all duration-200'>
+                    <button type='submit' className='w-full bg-[#c82f7e] text-white font-semibold p-3 rounded border border-gray-300 hover:bg-[#96205d] transition-all duration-200 tracking-wider'>
                         Place Order
                     </button>
                 </form>
+                {orderPlacedVisible && (
+                <div class="mx-auto w-1/2 flex items-center p-4 mt-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+                  <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                  </svg>
+                  <span class="sr-only">Info</span>
+                  <div>
+                    <span class="font-medium">Order Placed!</span>
+                  </div>
+                </div>
+                )}
             </div>
             <div className='w-1/2 flex flex-row items-center justify-center'>
                 <div className='mx-auto w-3/4 flex flex-col space-y-2 border-2 border-[#c82f7e] drop-shadow-sm'>

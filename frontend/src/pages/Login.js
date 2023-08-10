@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <section className='w-full relative tracking-wide min-h-[80vh] flex justify-center items-center'>
+    <section className='w-full relative tracking-wide min-h-[80vh] flex justify-center items-center flex-col'>
       <form onSubmit={handleSubmit} className="authorization-form">
         <div className="authorization-flex-column">
           <label>Email </label>
