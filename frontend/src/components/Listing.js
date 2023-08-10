@@ -186,13 +186,13 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
                     </div>
                 </div>
                 <div className='w-full lg:w-4/5 flex flex-col lg:p-4 space-x-2 lg:space-y-8'>
-                    <div aria-haspopup="true" aria-expanded={dropdownOpen} onClick={toggleDropdown} className='ml-5 right-0 w-28 border border-gray-300 p-2 rounded-md flex flex-row space-x-2 items-center justify-between cursor-pointer'>
+                    <div aria-haspopup="true" aria-expanded={dropdownOpen} onClick={toggleDropdown} className='ml-5 right-0 w-28 lg:w-40 border border-gray-300 p-2 rounded-md flex flex-row space-x-2 items-center justify-between cursor-pointer'>
                         <img className='w-4 h-4' src='../static/images/sort.png'></img>
                         <p className="text-sm lg:text-base mx-2">Sort By</p>
                         {!dropdownOpen && (<img src="../static/images/down-arrow.png" alt="Down arrow icon" className="w-3 h-3" />)}
                         {dropdownOpen && (<img src="../static/images/down-arrow.png" alt="Down arrow icon" className="w-3 h-3 rotate-180" />)}
                         {dropdownOpen && (
-                        <ul className="w-28 bg-white absolute rounded border border-gray-300 translate-y-3/4 -translate-x-4" aria-labelledby="filterDropdown">
+                        <ul className="w-28 lg:w-40 bg-white absolute rounded border border-gray-300 translate-y-3/4 -translate-x-4" aria-labelledby="filterDropdown">
                             <li>
                                 <button className="w-full mx-auto p-3 hover:bg-gray-200 text-xs lg:text-base " onClick={() => handleSort('low_to_high')}>
                                 Price: Low to high
@@ -215,7 +215,7 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
                             </Link>
                             <p className=' font-semibold'>${product.price}</p>
                             <div className='flex w-full justify-between space-x-1'>
-                                <div onClick={() => handleAddToCart(product)} className='w-4/5 flex flex-row color-secondary justify-center space-x-2 items-center hover:bg-[#96205d] transition-all duration-200 cursor-pointer'>
+                                <div onClick={() => handleAddToCart(product)} className='w-4/5 flex flex-row color-secondary justify-center lg:p-3 space-x-2 items-center hover:bg-[#96205d] transition-all duration-200 cursor-pointer'>
                                     <img className='w-5 h-5' src='../static/images/cart.png'></img>
                                     <p className='text-white font-semibold'>Add to Cart</p>
                                 </div>

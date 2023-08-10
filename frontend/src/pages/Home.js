@@ -23,9 +23,9 @@ const Home = () => {
 
   return (
     <section className='w-full relative tracking-wide'>
-        <div className='mx-auto w-5/6 flex flex-col space-y-6'>
+        <div className='mx-auto w-full px-2 xl:w-5/6 xl:px:0 flex flex-col space-y-6'>
             <img src='../static/images/maybelline-full.jpg' className='w-full'></img>
-            <div className='w-3/4 mx-auto grid grid-cols-4 gap-y-4 tracking-widest'>
+            <div className='w-3/4 mx-auto grid grid-cols-2 gap-x-4 lg:gap-x-0 lg:grid-cols-4 gap-y-4 tracking-widest'>
                 <Link to={`/category/Skin%20Care`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
                     <img src='../static/images/face.jpg' className='w-40 rounded-full bg-gray-200'></img>
                     <p className='text-xl font-semibold'>Face</p>
@@ -44,7 +44,7 @@ const Home = () => {
                 </Link>
             </div>
             <img src='../static/images/wet-n-wild-full.jpg' className='w-full'></img>
-            <div className='w-full grid grid-cols-2 gap-6'>
+            <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-6'>
                 <img src='../static/images/kerastase.jpg' className='w-full'></img>
                 <img src='../static/images/nyx-half.jpg' className='w-full h-full'></img>
             </div>  
@@ -52,7 +52,7 @@ const Home = () => {
             <div className='flex flex-col space-y-40 pt-12'>
                 <div className='mx-auto w-3/5 flex flex-col space-y-12'>
                     <p className='mx-auto text-3xl'>Top Brands</p>
-                    <div className='mx-auto w-full grid grid-cols-3 gap-6 justify-items-center'>
+                    <div className='mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center'>
                         <Link to={`/brands/NYX%20Professional%20Makeup`} className='h-44 w-64 flex flex-col pt-5 border border-gray-300 justify-between rounded-md'>
                             <div className='w-full h-3/4 flex justify-center items-center'>
                               <img className='mx-auto w-36' src='../static/images/nyx-logo.png'></img>
