@@ -4,7 +4,20 @@ import axios from 'axios';
 import Slider from '../components/Slider';
 
 const Home = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1023);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     // Function to fetch the first 10 products using Axios
@@ -24,7 +37,7 @@ const Home = () => {
   return (
     <section className='w-full relative tracking-wide'>
         <div className='mx-auto w-full px-2 xl:w-5/6 xl:px:0 flex flex-col space-y-6'>
-            <img src='../static/images/maybelline-full.jpg' className='w-full'></img>
+            <img src={isMobile ? "../static/images/maybelline-full-mobile.jpg" : "../static/images/maybelline-full.jpg"} className='w-full'></img>
             <div className='w-3/4 mx-auto grid grid-cols-2 gap-x-4 lg:gap-x-0 lg:grid-cols-4 gap-y-4 tracking-widest'>
                 <Link to={`/category/Skin%20Care`} className='w-full flex flex-col space-y-2 items-center justify-center p-3 hover:scale-105 transition-all duration-200 cursor-pointer'>
                     <img src='../static/images/face.jpg' className='w-40 rounded-full bg-gray-200'></img>
@@ -51,7 +64,7 @@ const Home = () => {
             <img src='../static/images/fragrance.jpg' className='w-full'></img>
             <div className='flex flex-col space-y-40 pt-12'>
                 <div className='mx-auto w-3/5 flex flex-col space-y-12'>
-                    <p className='mx-auto text-3xl'>Top Brands</p>
+                    <p className='mx-auto  text-xl lg:text-3xl'>Top Brands</p>
                     <div className='mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 justify-items-center'>
                         <Link to={`/brands/NYX%20Professional%20Makeup`} className='h-44 w-64 flex flex-col pt-5 border border-gray-300 justify-between rounded-md'>
                             <div className='w-full h-3/4 flex justify-center items-center'>
@@ -79,12 +92,12 @@ const Home = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='w-full flex flex-col space-y-12'>
-                    <p className='mx-auto text-3xl'>Best Sellers</p>
+                <div className='w-full flex flex-col space-y-6 lg:space-y-12'>
+                    <p className='mx-auto text-xl lg:text-3xl'>Best Sellers</p>
                     <Slider products={products}/>
                 </div>
-                <div className='w-full flex flex-col space-y-12'>
-                    <p className='mx-auto text-3xl'>New Arrivals</p>
+                <div className='w-full flex flex-col space-y-6 lg:space-y-12'>
+                    <p className='mx-auto  text-xl lg:text-3xl'>New Arrivals</p>
                     <Slider products={products}/>
                 </div>
             </div>

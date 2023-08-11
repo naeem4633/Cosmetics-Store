@@ -62,7 +62,7 @@ function App() {
         <div className="App-body">
           <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/product-details/:id' element={<ProductDetails onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered}/>}/>
+            <Route path='/product-details/:id' element={<ProductDetails onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
             <Route path='/listing' element={<Listing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
             <Route path='/brands/:brandName' element={<BrandListing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>
             <Route path='/category/:categoryName' element={<CategoryListing onChange={handleSavedItemsChange} setCartIsHovered={setCartIsHovered} setWishlistIsHovered={setWishlistIsHovered}/>}/>

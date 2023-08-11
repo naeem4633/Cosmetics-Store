@@ -22,9 +22,15 @@ const SearchResults = () => {
     fetchSearchResults();
   }, [query]);
 
-  return (
-    <Listing products={products}/>
-  );
-};
-
-export default SearchResults;
+    return (
+      <div>
+        {products.length > 0 ? (
+          <Listing products={products} />
+        ) : (
+          <p className='h-[40vh] p-3 text-center w-full'>No Results</p>
+        )}
+      </div>
+    );
+  };
+  
+  export default SearchResults;

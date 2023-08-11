@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -7,6 +7,19 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
     const [sortOption, setSortOption] = useState('None');
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 1023);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
   
     const handleMouseLeave = () => {
       setDropdownOpen(false);
@@ -126,7 +139,7 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
   return (
     <section className='w-full relative tracking-wide'>
         <div className='mx-auto w-full px-2 xl:w-5/6 xl:px-0 flex flex-col space-y-6'>
-            <img src='../static/images/listing-cover.jpg' className='w-full'></img>
+            <img src={isMobile ? "../static/images/listing-cover-mobile.jpg" : "../static/images/listing-cover.jpg"} className='w-full'></img>
               <div className='w-full flex flex-row'>
                 <div className='w-1/5 hidden lg:flex flex-col space-y-8'>
                     <div className='w-full flex flex-col border border-gray-300 px-4 py-6 rounded-lg space-y-6'>
@@ -179,7 +192,7 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
                             <Link to={`/brands/NYX%20Professional%20Makeup`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>NYX Professional Makeup</Link>
                             <Link to={`/brands/Egyptian%20Magic`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>Egyptian Magic</Link>
                             <Link to={`/brands/Maybelline%20New%20York`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>Maybelline New York</Link>
-                            <Link to={`/brands/Kerastane`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>Kerastane</Link>
+                            <Link to={`/brands/Kerastase`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>Kerastase</Link>
                             <Link to={`/brands/Wet%20n%20Wild%20Beauty`} className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>Wet n Wild Beauty</Link>
                             <Link to={`/brands/SugarBear%20Hair`}  className='rounded-md p-3 border border-gray-200 hover:bg-gray-200'>SugarBear Hair</Link>
                         </ul>

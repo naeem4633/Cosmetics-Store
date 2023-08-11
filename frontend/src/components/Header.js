@@ -17,7 +17,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-          if (cartRef.current && !cartRef.current.contains(event.target)) {
+          if (cartRef.current && !cartRef.current.contains(event.target)) { 
             setCartIsHovered(false);
           }
         };
@@ -117,20 +117,22 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
       };
       
       const handleKeyDown = (e) => {
-        // Handle the search when Enter key is pressed
         if (e.key === 'Enter') {
-          // Navigate to the product-search page with the query as a parameter
-          // Append the query to the URL as a query string
+
           window.location.href = `#/product-search/${query}`;
         }
       };
+      
 
   return (
     <section className='w-full relative top-0'>
         <div className='mx-auto w-full px-8 xl:w-5/6 xl:px:0 flex flex-row justify-between py-2 tracking-wide'>
             <div className='w-full lg:w-3/5 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4 justify-between items-center'>
-                <Link className='w-44 h-14 border border-black' to={'/'}>
-                    <img className=''></img>
+                <Link className='w-44 h-14 flex justify-center items-center' to={'/'}>
+                    <div className='flex space-x-2 items-center justify-center'>
+                        <img className='w-10' src='../static/images/logo.png'></img>
+                        <p className='font-semibold tracking-wider'>Cosmetics</p>
+                    </div>
                 </Link>
                 <div className='flex flex-row items-center w-full lg:w-3/4'>
                     <input value={query} onChange={handleInputChange} onKeyDown={handleKeyDown} className='h-6 lg:h-14 p-4 w-full border-2 border-red-300 text-gray-500 rounded tracking-wide text-sm lg:text-base' placeholder='Search for items...'></input>
@@ -415,7 +417,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                 </div>
                 <div className='flex flex-row text-sm lg:text-base'>
                     <ul className='w-full flex flex-row space-x-3 lg:space-x-6 items-center justify-center'>
-                        <li className=''>
+                        <li className='max-h-[50vh] lg:max-h-[75vh]'>
                         <Link onClick={() => {setWishlistIsHovered(true); setCartIsHovered(false);}}
                             className="block p-2">
                             <div className='flex flex-col lg:flex-row items-center justify-center space-x-1'>
@@ -424,7 +426,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                             </div>
                             {wishlistIsHovered && (
                             <div onMouseEnter={() => setWishlistIsHovered(true)}
-                            className="popover absolute right-0 lg:right-40 w-full lg:w-96 max-h-[75vh] bg-white rounded flex-col lg:my-3 drop-shadow-lg z-50" ref={wishlistRef}>
+                            className="popover absolute right-0 lg:right-40 w-full lg:w-96 bg-white rounded flex-col lg:my-3 drop-shadow-lg z-50" ref={wishlistRef}>
                                 <div className="flex flex-col">
                                 <p className="mx-auto m-4 lg:text-lg">Your Wishlist</p>
                                 {wishlistItems.length > 0 && (
@@ -436,7 +438,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                                     {wishlistItems.map((item) => (
                                         <>
                                         <div className="w-3/5 mx-auto border border-gray-100 mb-2"></div>
-                                        <div className="mx-auto w-3/4 flex flex-row my-3 justify-between text-xs lg:text-sm space-x-1">
+                                        <div className="mx-auto w-4/5 flex flex-row my-3 justify-between text-xs lg:text-sm space-x-1">
                                             <img
                                                 className="w-16 h-16 lg:w-20 lg:h-20"
                                                 src={item.product.image_url}
@@ -471,7 +473,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                             )}
                         </Link>
                         </li>
-                        <li className=''>
+                        <li className='max-h-[50vh] lg:max-h-[75vh]'>
                         <Link onClick={() => {setCartIsHovered(true); setWishlistIsHovered(false);}}
                             className="block p-2">
                             <div className='flex flex-col lg:flex-row items-center justify-center space-x-1'>
@@ -480,7 +482,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                             </div>
                             {cartIsHovered && (
                             <div onMouseEnter={() => setCartIsHovered(true)}
-                            className="popover absolute right-0 lg:right-40 w-full lg:w-96 max-h-[75vh] bg-white rounded flex-col lg:my-3 drop-shadow-lg z-50" ref={cartRef}>
+                            className="popover absolute right-0 lg:right-40 w-full lg:w-96 bg-white rounded flex-col lg:my-3 drop-shadow-lg z-50" ref={cartRef}>
                                 <div className="flex flex-col">
                                     <p className="mx-auto m-4 lg:text-lg">Your Cart</p>
                                     {cartItems.length > 0 && (
@@ -492,7 +494,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                                     {cartItems.map((item) => (
                                         <>
                                         <div className="w-3/5 mx-auto border border-gray-100 mb-2"></div>
-                                        <div className="mx-auto w-3/4 flex flex-row my-3 justify-between text-xs lg:text-sm space-x-1">
+                                        <div className="mx-auto w-4/5 flex flex-row my-3 justify-between text-xs lg:text-sm space-x-1">
                                             <img
                                                 className="w-16 h-16 lg:w-20 lg:h-20"
                                                 src={item.product.image_url}

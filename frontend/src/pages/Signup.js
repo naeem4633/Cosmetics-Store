@@ -52,7 +52,7 @@ const Signup = () => {
   return (
     <section className='w-full relative tracking-wide min-h-[80vh] flex justify-center items-center'>
         <form onSubmit={handleSubmit} className="authorization-form">
-          <div className="flex-column">
+          <div className="authorization-flex-column">
             <label>Username </label>
           </div>
           <div className="authorization-inputForm">
@@ -60,7 +60,7 @@ const Signup = () => {
             <input type="text" id="username" name="username" className="authorization-input" placeholder="Enter your Username" value={formData.username} onChange={handleChange} />
           </div>
 
-          <div className="flex-column">
+          <div className="authorization-flex-column">
             <label>Email </label>
           </div>
           <div className="authorization-inputForm">
@@ -68,7 +68,7 @@ const Signup = () => {
             <input type="email" id="email" name="email" className="authorization-input" placeholder="Enter your Email" value={formData.email} onChange={handleChange} />
           </div>
         
-          <div className="flex-column">
+          <div className="authorization-flex-column">
             <label>Password </label>
           </div>
           <div className="authorization-inputForm">
