@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Checkout from './pages/Checkout';
 import SearchResults from './pages/SearchResults';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   const [savedItems, setSavedItems] = useState([]);
@@ -70,6 +71,7 @@ function App() {
             <Route path='/signup' element={<Signup />} />
             <Route path='/checkout' element={<Checkout savedItems={savedItems} onChange={handleSavedItemsArrayChange} />} />
             <Route path='/product-search/:query' element={<SearchResults />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
         <Footer />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -52,8 +53,11 @@ const Footer = () => {
                 </ul>
                 <ul className='hidden lg:block w-full space-y-4 pt-2'>
                     <p className='lg:text-xl font-semibold py-2'>Popular Brands</p>
-                    <li className='flex flex-row space-x-2 items-baseline'>NYX Professional Makeup</li>
-                    <li className='flex flex-row space-x-2 items-baseline'>Maybelline New York</li>
+                    <Link to={`/brands/NYX%20Professional%20Makeup`} className='flex flex-row space-x-2 items-baseline'>NYX Professional Makeup</Link>
+                    <Link to={`/brands/Maybelline%20New%20York`} className='flex flex-row space-x-2 items-baseline'>Maybelline New York</Link>
+                    <Link to={`/brands/Kerastase`} className='flex flex-row space-x-2 items-baseline'>Kerastase</Link>
+                    <Link to={`/brands/Wet%20n%20Wild%20Beauty`} className='flex flex-row space-x-2 items-baseline'>Wet n Wild Beauty</Link>
+                    <Link to={`/brands/SugarBear%20Hair`} className='flex flex-row space-x-2 items-baseline'>SugarBear Hair</Link>
                 </ul>
                 <div className='hidden xl:flex w-full flex-col space-y-2 text-base'>
                     <p className='font-semibold'>Secure Payment Gateways</p>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Slider from '../components/Slider';
 import MovingImages from '../components/MovingImages';
+import { ResetPage } from '../components/ResetPage';
 
 const ProductDetails = ({onChange, setCartIsHovered, setWishlistIsHovered}) => {
     const { id } = useParams();
@@ -131,6 +132,7 @@ const ProductDetails = ({onChange, setCartIsHovered, setWishlistIsHovered}) => {
       
   return (
     <section className='w-full relative flex flex-col tracking-wide mt-16 space-y-20'>
+      <ResetPage />
       <div className='mx-auto w-full xl:w-3/4 flex flex-col xl:flex-row tracking-wide p-4'>
         <div className='w-full xl:w-1/2 flex flex-col'>
             <div className='h-[60vh]'>

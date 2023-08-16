@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { ResetPage } from '../components/ResetPage';
 
 const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) => {
     const [user, setUser] = useState({});
@@ -138,6 +139,7 @@ const Listing = ({products, onChange, setWishlistIsHovered, setCartIsHovered}) =
 
   return (
     <section className='w-full relative tracking-wide'>
+        <ResetPage />
         <div className='mx-auto w-full px-2 xl:w-5/6 xl:px-0 flex flex-col space-y-6'>
             <img src={isMobile ? "../static/images/listing-cover-mobile.jpg" : "../static/images/listing-cover.jpg"} className='w-full'></img>
               <div className='w-full flex flex-row'>

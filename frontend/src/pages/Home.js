@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Slider from '../components/Slider';
+import { ResetPage } from '../components/ResetPage';
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1023);
@@ -36,6 +37,7 @@ const Home = () => {
 
   return (
     <section className='w-full relative tracking-wide'>
+        <ResetPage />
         <div className='mx-auto w-full px-2 xl:w-5/6 xl:px:0 flex flex-col space-y-6'>
             <img src={isMobile ? "../static/images/maybelline-full-mobile.jpg" : "../static/images/maybelline-full.jpg"} className='w-full'></img>
             <div className='w-3/4 mx-auto grid grid-cols-2 gap-x-4 lg:gap-x-0 lg:grid-cols-4 gap-y-4 tracking-widest'>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Listing from '../components/Listing';
+import { ResetPage } from '../components/ResetPage';
 
 const SearchResults = () => {
   const { query } = useParams();
@@ -24,6 +25,7 @@ const SearchResults = () => {
 
     return (
       <div>
+        <ResetPage />
         {products.length > 0 ? (
           <Listing products={products} />
         ) : (

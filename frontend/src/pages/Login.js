@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../authorization.css'
+import { ResetPage } from '../components/ResetPage';
 
 const Login = () => {
   const [authorized, setAuthorized] = useState(true);
@@ -40,6 +41,7 @@ const Login = () => {
 
   return (
     <section className='w-full relative tracking-wide min-h-[80vh] flex justify-center items-center flex-col'>
+      <ResetPage />
       <form onSubmit={handleSubmit} className="authorization-form">
         <div className="authorization-flex-column">
           <label>Email </label>

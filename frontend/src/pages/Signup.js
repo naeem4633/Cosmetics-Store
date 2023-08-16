@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../authorization.css'
+import { ResetPage } from '../components/ResetPage';
 
 const Signup = () => {
     // State to hold form data
@@ -51,6 +52,7 @@ const Signup = () => {
 
   return (
     <section className='w-full relative tracking-wide min-h-[80vh] flex justify-center items-center'>
+        <ResetPage />
         <form onSubmit={handleSubmit} className="authorization-form">
           <div className="authorization-flex-column">
             <label>Username </label>
