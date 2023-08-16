@@ -9,8 +9,8 @@ const ErrorPage = () => {
         <div className="flex flex-col items-center w-full h-[50vh]">
             <div className='w-full h-full flex flex-col justify-evenly'>
                 <div className='flex flex-col heading items-center'>
-                    <p className='text-6xl font-bold'>404</p>
-                    <p className='text-xl lg:text-4xl font-semibold text-black'>Page Not Found</p> 
+                    <p className='text-red-600 text-6xl font-bold'>404</p>
+                    <p className='text-xl lg:text-4xl font-semibold text-red-600'>Page Not Found</p> 
                 </div>
             </div>
             <Link to={'/'} className='w-full lg:w-3/4 items-center p-8'>
