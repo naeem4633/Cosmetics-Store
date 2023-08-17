@@ -131,7 +131,7 @@ const Header = ({savedItems, onChange, cartIsHovered, wishlistIsHovered, setCart
                 <Link className='w-44 h-14 flex justify-center items-center' to={'/'}>
                     <div className='flex space-x-2 items-center justify-center'>
                         <img className='w-10' src='../static/images/logo.png'></img>
-                        <p className='font-semibold tracking-wider'>Cosmetics</p>
+                        <p className='font-semibold tracking-wider'>Cosmetics Boutique</p>
                     </div>
                 </Link>
                 <div className='flex flex-row items-center w-full lg:w-3/4'>
